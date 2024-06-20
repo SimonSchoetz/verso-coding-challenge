@@ -1,0 +1,15 @@
+ul {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+
+  li {
+    width: "full";
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+  li:nth-child(2n) {
+    background-color: rgb(224, 224, 224);
+  }
+}
