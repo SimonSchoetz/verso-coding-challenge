@@ -2,18 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Subscription, take } from 'rxjs';
 import { ListGeneratorService } from './services';
-import { FizzBuzzControlFormComponent } from './components';
+import {
+  FizzBuzzControlFormComponent,
+  ListContainerComponent,
+} from './components';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FizzBuzzControlFormComponent],
+  imports: [RouterOutlet, FizzBuzzControlFormComponent, ListContainerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
   title = 'verso-code-challenge';
   subscription?: Subscription;
+
+  listItems: string[] = [];
 
   constructor(private listGeneratorService: ListGeneratorService) {}
 
@@ -25,7 +30,7 @@ export class AppComponent implements OnInit {
     this.subscription = this.listGeneratorService
       .generateFizzBuzzListValues()
       .subscribe((value) => {
-        console.log('>>>>>>>>> | .subscribe | value:', value);
+        this.listItems.push(value);
       });
   }
 
