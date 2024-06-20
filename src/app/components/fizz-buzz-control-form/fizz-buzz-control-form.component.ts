@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -14,19 +14,17 @@ import {
   styleUrl: './fizz-buzz-control-form.component.scss',
 })
 export class FizzBuzzControlFormComponent {
+  @Output() onFormSubmit = new EventEmitter<boolean>();
+
   form: FormGroup<{ stop: FormControl }>;
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       stop: ['', [Validators.required, Validators.pattern('stop')]],
     });
-
-    this.form.valueChanges.subscribe((el) => {
-      console.log(el);
-    });
   }
-  onSubmit($event: any): void {
-    this.form.valid;
-    console.log(this.form.valid, $event);
+
+  handleSubmit(): void {
+    this.onFormSubmit.emit(this.form.valid);
   }
 }

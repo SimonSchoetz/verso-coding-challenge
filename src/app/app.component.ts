@@ -24,9 +24,18 @@ export class AppComponent implements OnInit {
   startFizzBuzzListGenerator(): void {
     this.subscription = this.listGeneratorService
       .generateFizzBuzzListValues()
-      .pipe(take(15))
       .subscribe((value) => {
-        // console.log('>>>>>>>>> | .subscribe | value:', value);
+        console.log('>>>>>>>>> | .subscribe | value:', value);
       });
+  }
+
+  stopFuzzBuzzListGenerator(): void {
+    this.subscription?.unsubscribe();
+  }
+
+  handleFormSubmit(valid: boolean): void {
+    if (valid) {
+      this.stopFuzzBuzzListGenerator();
+    }
   }
 }
