@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Subscription, take } from 'rxjs';
 import { ListGeneratorService } from './services';
+import { FizzBuzzControlFormComponent } from './components';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, FizzBuzzControlFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
