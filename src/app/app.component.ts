@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
       .generateFizzBuzzListValues()
       .pipe(take(15))
       .subscribe((value) => {
-        console.log('>>>>>>>>> | .subscribe | value:', value);
+        // console.log('>>>>>>>>> | .subscribe | value:', value);
       });
   }
 }

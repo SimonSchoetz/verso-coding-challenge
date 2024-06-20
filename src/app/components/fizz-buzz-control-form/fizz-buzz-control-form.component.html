@@ -1,1 +1,4 @@
-<p>fizz-buzz-control-form works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+  <input id="stop" formControlName="stop" placeholder="Type stop..." />
+  <button type="submit" [disabled]="!form.valid">Stop</button>
+</form>
