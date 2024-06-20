@@ -8,9 +8,8 @@ describe('ListContainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ListContainerComponent]
-    })
-    .compileComponents();
+      imports: [ListContainerComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ListContainerComponent);
     component = fixture.componentInstance;
@@ -19,5 +18,20 @@ describe('ListContainerComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render list items', () => {
+    component.listItems = ['1', '2', '3'];
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('li:nth-child(1)')?.textContent).toContain(
+      '1'
+    );
+    expect(compiled.querySelector('li:nth-child(2)')?.textContent).toContain(
+      '2'
+    );
+    expect(compiled.querySelector('li:nth-child(3)')?.textContent).toContain(
+      '3'
+    );
   });
 });
